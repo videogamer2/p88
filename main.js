@@ -1,11 +1,9 @@
 
-var canvas = new fabric.canvas("myCanvas");
-var bx = 0;
-var by = 0;
+var canvas = new fabric.Canvas("myCanvas");
+var bx = 20;
+var by = 20;
 var hx = 800;
 var hy = 200;
-ball_obj = fromURL("ball.png");
-hole_obj_obj = fromURL("golf-h.png");
 
 block_image_width = 5;
 block_image_height = 5;
@@ -38,18 +36,17 @@ function newImage()
 		})
 }
 
-if((bx == hx)&&(by == hy)){
-	canvas.remove(ball_obj);
-	document.getElementById("hd3").innerHTML="Você Conseguiu !!";
-	document.getElementById("myCanvas").style.borderColor="red";
-}
-
 window.addEventListener("keydown", myKeyDown);
 
 function myKeyDown(e)
 {
 	keyPressed = e.keyCode;
 	console.log(keyPressed);
+	if((bx == hx)&&(by == hy)){
+		canvas.remove(ball_obj);
+		document.getElementById("hd3").innerHTML="Você Conseguiu !!";
+		document.getElementById("myCanvas").style.borderColor="red";
+	}
 
 		if(keyPressed == '38')
 		{
@@ -75,9 +72,10 @@ function myKeyDown(e)
 	
 	function up()
 	{
-		if(by<=20){
+		if(by>=20){
 		by = by - block_image_height;
 		canvas.remove(ball_obj);}
+		newImage();
 	}
 
 	function down()
@@ -85,23 +83,26 @@ function myKeyDown(e)
 		if(by<=450){
 		by = by + block_image_height;
 		canvas.remove(ball_obj);}
+		newImage();
 	}
 
 	function left()
 	{
-		if(ball_X >5)
+		if(bx >=5)
 		{
 			bx = bx - block_image_width;
 			canvas.remove(ball_obj);
+			newImage();
 		}
 	}
 
 	function right()
 	{
-		if(ball_X <=1050)
+		if(bx <=1050)
 		{
 			bx = bx + block_image_width;
 			canvas.remove(ball_obj);
+			newImage();
 		}
 	}
 
