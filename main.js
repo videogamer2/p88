@@ -43,9 +43,9 @@ function myKeyDown(e)
 	keyPressed = e.keyCode;
 	console.log(keyPressed);
 	if((bx == hx)&&(by == hy)){
-		canvas.remove(ball_obj);
 		document.getElementById("hd3").innerHTML="Você Conseguiu !!";
 		document.getElementById("myCanvas").style.borderColor="red";
+		canvas.remove(ball_obj);
 	}
 
 		if(keyPressed == '38')
@@ -105,5 +105,3 @@ function myKeyDown(e)
 			newImage();
 		}
 	}
-
-
